@@ -4,7 +4,7 @@ This python application using jupyter notebookm compares the results of k-neares
 
 
 </br>
-The current CRISP-DM Process Model for Data Mining (see Figure 1) was followed.
+The current CRISP-DM Process Model for Data Mining was followed.
 
 
 <h2>Business Understanding</h2>
@@ -16,12 +16,10 @@ The original dataset (bank-full.csv) given is in .csv format.It consists of 17 c
 
 
 <h2>Data Preparation</h2>
-The first step was check if there were any null values, and also make sure that there was not duplicates present in the dataset as well. As it is observed in Figure 4, there were initially no null values nor duplicates.
+The first step was check if there were any null values, and also make sure that there was not duplicates present in the dataset as well. There were initially no null values nor duplicates.
 
 
-Columns: "job", "education", "poutcome", and "contact" have a feature with the same name: "unknown", so it was decided to replace it with different names to avoid potential problems in the foregoing analysis as indicated by Figure 5:
-
-
+Columns: "job", "education", "poutcome", and "contact" have a feature with the same name: "unknown", so it was decided to replace it with different names to avoid potential problems in the foregoing analysis.
 
 
 More insight into the dataset can be gained before finalizing the data preparation by doing the histograms for most of the categorical columns as shown on Figures 6, 7, and 8. All categorical columns/independent variables are nominal.
@@ -38,17 +36,13 @@ One pass was applied to the aforementioned columns in order to remove the outlie
 The target column, i.e., the dependent variables: "y" is binary, and imbalanced as observed below:
 
 
-Once an effective cleaning work has been completed, including removing most or all of the outliers. A boxplot "balance" vs. most of independent columns was built & analyized, indicating that in all categories: the client's age,client's job,client' marital status, client's education level, including housing's loan, personal's loan, even the  contact communication's, the clients that subscribed term deposit have more money in the their balance's account in general. Some of those plots are shown below:
-
-
-
+Once an effective cleaning work has been completed, including removing most or all of the outliers. A boxplot "balance" vs. most of independent columns was built & analyized, indicating that in all categories: the client's age,client's job,client' marital status, client's education level, including housing's loan, personal's loan, even the  contact communication's, the clients that subscribed term deposit have more money in the their balance's account in general. 
 
 
 <h4>Treatment of Categorical Features</h4>
 
 <h3>Nominal Features</h3>
 Nominal features are categorical features that have no numerical importance. Order does not matter. Most of the columns were found to fall in this category as follows: "job", "eudcation","contact","month", "day", "marital",and "poutcome". The Pandas getdummies function was used to creates dummy variables was used to treat them. A dummy variable is a numerical variable that encodes categorical information, having two possible values: 0 or 1. 
-Those encoded features were added to the existing dataset using the panda function contact as shown  on Figure 20:
 
 
 
@@ -59,7 +53,7 @@ Binary data is also nominal data, meaning they represent qualitatively different
 None of the independent variables were considered to be treated as a ordinal feature, not even "poutcome", since there were a bunch of 'unknown' and 'other' items listed, beside 'failure' and 'success'.
 
 </br>
-</br>
+
 
 Since, most of the columns have values between 0 or 1, it was decided to scale the column: "balance" as follow:
 
@@ -84,18 +78,14 @@ Although, working with imbalance data is always a challenge for any particular M
 The supervised learning algorithm K-nearest neighbors (KNN) was used for classification in this analysis.
 
 <h4>Logistic Regression</h4>
-The supervised learning algorithm Logistic regression was also used for classification in this analysis, since the dependent variable is binary.The pipeline model is shown on Figure 29. 
-                  
+The supervised learning algorithm Logistic regression was also used for classification in this analysis, since the dependent variable is binary.
 
 <h4>Support Vector Machine</h4>
-The supervised learning support vector machine (SVM) is used for classification in this analysis.The pipeline model is shown on Figure 32. 
+The supervised learning support vector machine (SVM) is used for classification in this analysis.
                   
-
 <h4>Decision Tree</h4>
-The supervised learning decision tree is used for classification in this analysis.The pipeline model is shown on Figure 35. 
+The supervised learning decision tree is used for classification in this analysis.
                   
-
-
 
 <h2>Evaluation</h2>
 As it can be observed,  the best model seems to be Logistic Regression as shown on Table 1. Also, it can be observed,  the elapsed time consumed for fitting for the SVC model is significantly larger than the rest of the models. The reason for that is that the option probability=True was used in this model, in order to be able to make it work to generate a later its precision- recall curve. This type of curve works much better for moderate to large imbalanced data than the ROC-curve, which is the case for the dataset used in this analysis. This curve ( see figure 38) may indicate that the best model is the Logistic Regression(red line), however,  it did consume a bit more elapsed time than that of KNeighborsClassifier. The confusion matrix (figure 39) and some of its associated statistics (see Table 2) suggest that the precision number seems to be a bit  better in the KNeighborsClassifier (73%) versus the Logistic regression  (67%), Support vector Machine  (63%),and Decision Tree (64%) , but Support Vector Machine model seems to have a bit better recall number (56%),  versus the Logistic regression  (53%), Decision Tree (54%),and  KNeighborsClassifier  (41%) . However, it is thought that the recall is more important, since the bank would greatly regret if potentially good clients are predicted not to subscribe a term deposit. In other words, minimizing the number of False Negatives would be of paramount importance for the bank, specially knowing that those outnumber the number of False Positives. However, overall, it was thought that Logistic Regression model may be considered the winner for classifying the dataset analyzed in this study. The KNeighborsClassifier and Decision Tree are fairly decent as well. 
