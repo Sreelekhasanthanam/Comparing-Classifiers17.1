@@ -6,12 +6,6 @@ This python application using jupyter notebookm compares the results of k-neares
 </br>
 The current CRISP-DM Process Model for Data Mining (see Figure 1) was followed.
 
-</br>
-</br>
-<p align="center">
-<img src="images/Figure1_CRISP_DM_Model.jpeg" width="300px" height="300px">
-<h4 align="center"> Figure 1</h4>
-</p>
 
 <h2>Business Understanding</h2>
 The Business goal is  to come up with the best machine learning classification model to predict if a future client will subscribe a term deposit or not based on several independent variables such as education level, marital status, if has housing loan or not, personal loan or not, etc. The best machine learning classification model is selected by ranking up four different machine learning models: KNeighborsClassifier, Logistic Regression, Support Vector Machine, and Decision Tree by their metrics and other indicators such as the Precision-recal curve, and confusion matrix. The dataset used to train those four models is related to the marketing of bank products over the telephone as mentioned before. The analysis was done using python & jupyter notebook.
